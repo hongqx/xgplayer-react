@@ -4,7 +4,8 @@ import './App.css';
 
 let configMp4 = {
   id: 'vs1',
-  url: '/xgplayer-demo.mp4'
+  url: '/xgplayer-demo.mp4',
+  ignores: ['playbackrate']
 };
 let Mp4Player = null;
 let rootStyle = {
@@ -27,7 +28,13 @@ class App extends Component {
 
   render() {
     return (<div className="App">
-      <ReactXgplayer rootStyle={rootStyle} config={configMp4} playerInit={(player)=>{ Mp4Player = player; }}  readyHandle={ ()=>{ this.readyHandle(); } } completeHandle={ ()=>{ this.completeHandle(); } } destroyHandle={ ()=>{ this.destroyHandle(); } }/>
+      <ReactXgplayer 
+      rootStyle={rootStyle} 
+      config={configMp4} 
+      playerInit={(player)=>{ Mp4Player = player; }} 
+      readyHandle={ ()=>{ this.readyHandle(); } } 
+      completeHandle= { ()=>{ this.completeHandle(); } } 
+      destroyHandle= { ()=>{ this.destroyHandle(); } }/>
     </div>);
   }
 }

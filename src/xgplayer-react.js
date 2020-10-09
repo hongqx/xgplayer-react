@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Player from 'xgplayer';
+import 'xgplayer/dist/xgplayer.css';
 
 let player = null;
 
@@ -16,7 +17,7 @@ export default class ReactXgplayer extends Component {
       props.config.ignores = props.config.ignores.concat(['backward', 'cover', 'forward', 'meta', 'next', 'prev']);
       player = new Player(props.config) || {};
       player.once('ready', () => { this.props.readyHandle(); });
-      player.once('complete', () => { this.props.completeHandle(); });
+      player.once('complete', () => { this.props.completeHandle(); }); 
       player.once('destroy', () => { this.props.destroyHandle(); });
       playerInit && props.playerInit(player);
     }
@@ -76,7 +77,7 @@ ReactXgplayer.propTypes = {
   destroyHandle: PropTypes.func
 };
 ReactXgplayer.defaultProps = {
-  config: { id: 'mse', url: '' },
+  config: { id: 'mse', url: '',plugins:[] },
   format: 'mp4',
   playerInit: () => {},
   rootStyle: {},
