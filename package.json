@@ -15,6 +15,7 @@
   "devDependencies": {
     "@koa/cors": "^2.2.1",
     "autoprefixer": "7.1.6",
+    "babel-cli": "^6.26.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -58,7 +59,7 @@
   },
   "scripts": {
     "start": "node scripts/build.js && node server.js",
-    "build": "mkdir -p lib && babel src/xgplayer-react.js --out-file lib/index.js",
+    "build": "mkdir -p lib && ./node_modules/.bin/babel src/xgplayer-react.js --out-file lib/index.js",
     "release:alpha": "npm version prerelease --preid=alpha && npm publish --tag alpha --registry=http://registry.npmjs.org",
     "release:alpha-test": "npm publish --tag alpha-test --registry=http://registry.npmjs.org",
     "release:3.0": "npm version patch && npm publish --tag 3.0 --registry=http://registry.npmjs.org",
